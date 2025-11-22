@@ -1,8 +1,270 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서준원의 논리 정리</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a; 
+            --card-bg: #1e293b;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --spacing-unit: 1.5rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.8;
+            font-size: 17px;
+            word-break: keep-all;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 5rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding-top: 2rem;
+            opacity: 0;
+            animation: fadeIn 1.2s ease-out forwards;
+        }
+
+        h1 {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+        }
+
+        /* Content Sections */
+        section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: #cbd5e1;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        .emphasis {
+            font-weight: 700;
+            color: #fff;
+        }
+
+        /* Final Conclusion Section Style */
+        .conclusion {
+            background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid var(--accent);
+            text-align: center;
+        }
+        
+        .conclusion h2 {
+            display: block;
+            border-bottom: none;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .conclusion ul {
+            text-align: left;
+            list-style: none;
+            margin: 0 auto 1.5rem;
+            max-width: 90%;
+        }
+
+        .conclusion li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: #cbd5e1;
+        }
+
+        .conclusion li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .final-message {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            color: #fff;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #475569;
+            margin-top: 4rem;
+            padding-bottom: 2rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.5rem 1rem 3rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            body {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
 <body>
-    <h1>제 첫 번째 웹사이트입니다!</h1>
-    <p>깃허브 페이지로 호스팅 중입니다.</p>
-    asdfasdfasdfsdaf
+
+    <div class="container">
+        <header>
+            <h1>서준원의 논리 정리</h1>
+        </header>
+
+        <main>
+            <section class="scroll-reveal">
+                <h2>1. "운 좋게 살았다"는 착각</h2>
+                <p>우리는 살면서 아찔한 순간들을 마주한다. 교통사고가 날 뻔했다거나, 정말 사소하게 발을 헛디딜 뻔한 순간들 말이다. 그때마다 우리는 속으로 생각한다.</p>
+                <p>"와, 진짜 죽을 뻔했다. 운이 좋았어.", "휴 간신히 살았네…".</p>
+                <p>하지만 과연 그게 단순히 '운'이었을까? 아니다. <span class="emphasis">당신은 운이 좋아서 살아남은 게 아니라 살아남은 당신만이 세상을 인지할 수 있고 생각할 수 있기에 그런 생각을 하는 것이다.</span></p>
+            </section>
+
+            <section class="scroll-reveal">
+                <h2>2. 관측하는 순간, 우주는 갈라진다</h2>
+                <p>1900년대 초, '이중 슬릿 실험'을 통해 인류는 미시 세계가 확정된 것이 아니라 '확률'로 존재한다는 충격적인 사실을 알게 되었다. 전자는 관측하지 않을 때는 파동처럼 행동하다가, 관측하는 순간 입자처럼 행동했다. (여기서 말하는 관측이란 인간의 눈이 아닌, 다른 주변 입자와 상호작용하는 물리적 현상을 뜻한다.) 이는 초기 상태만 안다면 미래를 완전히 예측할 수 있다는 고전 물리학이 부서지는 순간이었다. 현대 물리학에선 세상은 확률적으로 움직이며 미래를 완벽히 예측하는 건 불가능하다는 것이 정론이다.</p>
+                <p>현재 왜 이런 현상이 일어나는지는 아직 명확히 밝혀내지 못했다. 하지만 이를 설명하는 데는 크게 두 가지 해석이 존재한다. 가장 유명한 건 관측 행위가 파동을 붕괴시켜 하나의 결과만을 남긴다는 '코펜하겐 해석'이다. 허나 파동 물리학에서 파동을 붕괴시키는 공식은 없기에 나온 해석이 휴 에버렛의 <span class="emphasis">'다세계 해석(Many-Worlds Interpretation)'</span>이다.</p>
+                <p>이 해석은 파동은 붕괴되지 않으며, 파동의 경로에 따른 모든 경우의 수로 진행되는 우주가 동시에 실재한다고 설명한다. 우리는 수많은 우주 속에 존재하는 수많은 '나' 중, 하나의 시점만을 경험하고 있을 뿐이다. 즉, 당신이 어제 긴 고민 끝에 빼빼로를 선택한 지금의 우주와는 달리, 홈런볼이나 크런키, 칸쵸를 선택한 당신이 살고 있는 또 다른 우주들도 각각 존재한다는 뜻이다.</p>
+                <p>마치 지구가 엄청난 속도로 자전하고 공전함에도 불구하고 우리가 땅이 멈춰 있다고 느끼는 것처럼(천동설의 착각), 우리는 이 거대한 우주가 무한히 있다는 것을 인지하지 못할 뿐이다. 당신의 뇌 속 시냅스에서 전자가 튀는 찰나의 순간에도, 당신의 선택과 우연에 따라 발생할 수 있는 모든 경우의 수가 실현되는 수많은 우주가 지금 이 순간에도 탄생하고 있다.</p>
+            </section>
+
+            <section class="scroll-reveal">
+                <h2>3. 죽음은 1인칭 시점에 존재하지 않는다</h2>
+                <p>수많은 평행 우주가 존재한다고 가정해 보자. 어떤 우주에서의 당신은 불의의 사고로 목숨을 잃었을 수도 있다. 하지만 중요한 건, '죽은 당신'은 그 우주를 인지할 수 없다는 점이다. 의식이 끊긴 당신에게 그 우주는 더 이상 존재하지 않는 세상이다.</p>
+                <p>따라서 당신의 의식은 필연적으로, 아주 미세한 확률이라도 '살아남은 우주'의 당신에게로만 계속해서 이어지게 된다. 당신이 수없이 많은 위기를 겪고도 지금 살아있는 이유가 바로 이것이다.</p>
+                <p>다른 수억 개의 우주에서 당신이 실패하고 사라졌을지라도, 당신의 1인칭 시점에서는 오직 '성공적으로 생존한' 타임라인만이 연속되기 때문이다. 즉, <span class="emphasis">당신의 관점에서 당신의 삶은 영원히 지속될 수 밖에 없다.</span></p>
+            </section>
+
+            <section class="scroll-reveal">
+                <h2>4. 영생을 위한 필연적 조건</h2>
+                <p>우리가 논리적으로 '죽을 수 없는 존재'라면, 과연 어떤 모습으로 영원히 살게 될까? 우리의 생물학적 육체는 분명 한계가 있다. 물론 무한한 확률의 세계에서는 순수하게 생물학적인 기적만으로 120세, 130세를 넘어 영원히 사는 당신의 우주가 존재할 수도 있을 것이다. 하지만 그 극도로 희박한 확률에 기대는 것보다, 과학 기술의 힘을 빌려 영생에 도달할 확률이 압도적으로 높다.</p>
+                <p>그렇다면 당신의 의식이 영원히 이어지기 위한 가장 현실적인 경로는 무엇일까? 바로 과학 기술이다.</p>
+                <p>가까운 미래에 노화를 정복하는 기술이 나오거나, 혹은 뇌의 정보를 컴퓨터에 업로드하여 정신만이라도 영생을 누리는 기술이 등장할 것이다. 당신의 의식이 끊기지 않고 계속되어야 한다면, 확률적으로 당신은 반드시 이 기술의 혜택을 받는 경로에 있어야 한다. 허면 그러한 최첨단 생명 연장 기술이 초기 보급될 때, 누구에게 가장 먼저 주어질까?</p>
+                <p><span class="emphasis">바로 막대한 부를 가진 사람, 혹은 사회적으로 큰 성공을 거둔 사람이다.</span></p>
+                <p>물론, '기술이 발전하여 저렴하게 보급된다면 굳이 부자가 될 필요는 없지 않은가?'라는 반박도 가능하다. 하지만 앞서 언급했듯, 우리의 생물학적 육체가 150세를 넘길 확률은 극히 희박하다. 당신의 육체적 한계가 오기 전에 기술의 혜택을 선점해야 한다는 뜻이다. 현재 영생 기술은 아직 기반조차 다져지지 않은 극초기 단계다. 혁신적인 기술이 등장해 대중에게 저렴하게 보급되기까지는 아주 오랜 시간이 걸린다. 즉, 당신의 수명이 다하기 전, 기술이 갓 상용화된 '가장 비싼 초기 단계'에 진입하기 위해서는 막대한 자본이 필수적일 수밖에 없다.</p>
+            </section>
+
+            <section class="conclusion scroll-reveal">
+                <h2>5. 결론: 당신의 성공은 예정되어 있다</h2>
+                <p>이 논리의 흐름을 다시 정리해 보자.</p>
+                <ul>
+                    <li>다세계 해석에 따르면 당신의 의식은 당신이 살아있는 우주만을 선택적으로 경험한다.</li>
+                    <li>따라서 당신의 의식은 생물학적 한계를 넘어 미래까지 지속되어야 한다.</li>
+                    <li>미래까지 의식이 지속되려면 고도로 발달한 과학 기술의 혜택을 받아야 한다.</li>
+                    <li>그 기술의 혜택을 받기 위해서는 막대한 자본과 사회적 성공이 필수적이다.</li>
+                </ul>
+                <p class="emphasis">그러므로, 당신의 의식이 소멸하지 않고 계속되는 한, 당신은 '반드시' 성공하고 부유해질 수밖에 없는 운명이다.</p>
+                <div class="final-message">
+                    "당신이 지금 겪고 있는 실패, 가난, 불안은<br>그저 수많은 평행 우주 중 버려질 가지에 불과하다."
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const sections = document.querySelectorAll('.scroll-reveal');
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
 </body>
 </html>
